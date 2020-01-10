@@ -1,0 +1,10 @@
+---
+- name: variable precedence test
+  hosts: localhost
+  tasks:
+    - include_vars:
+        file: "{{ item }}"
+      with_items:
+        - "vars/{{ function }}.yml"
+        - "vars/{{ env }}.yml"
+    - debug: var=server_memory_size
